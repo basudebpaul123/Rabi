@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Lost_and_Found.Models.Founditem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <h1 class="mt-5 text-center">Founditem</h1>
+
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
+    </p>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoundArea)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FoundArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/img/" + item.Image)" width="100" height="100" alt="Item Image" />
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", new { id = item.ItemId })" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="@Url.Action("Details", new { id = item.ItemId })" class="btn btn-info btn-sm">Details</a>
+                            <a href="@Url.Action("Delete", new { id = item.ItemId })" class="btn btn-danger btn-sm">Delete</a>
+                            <form method="post" action="@Url.Action("CreateClaim", "ClaimsController")">
+                                <input type="hidden" name="modelID" value="@item.ItemId" />
+                                <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+                            </form>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,70 @@
+﻿@model Lost_and_Found.Models.Lostitem
+
+@{ ViewData["Title"] = "Details"; }
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .row {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+        align-content: center;
+        align-items: center
+    }
+</style>
+<h3>Details</h3>
+<div>
+    <h4>Lostitem</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItemCategory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItemCategory)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LostArea)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LostArea)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            Uploaded Image
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/img/"+Model.Image)" height="250px" width="250px" asp-append-version="true" />
+        </dd>
+    </dl>
+    
+        <a asp-action="Edit" asp-route-id="@Model.ItemId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+   
+   </div>
+
+
+
+
+

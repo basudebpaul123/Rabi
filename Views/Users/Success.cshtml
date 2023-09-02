@@ -1,0 +1,11 @@
+﻿@model Lost_and_Found.Models.User
+@using Microsoft.AspNetCore.Http;
+@{ ViewData["Title"] = "Success"; }
+
+<h2>Login Success</h2>
+<h3>Session Page</h3>
+ 
+     userId = @Context.Session.GetString("UserId");
+
+
+<br />
